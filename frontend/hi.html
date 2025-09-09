@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5a67d8;
+            --accent: #e05561;
+            --bg: #f9f9fb;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        header {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--primary);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Roboto Slab', serif;
+            color: var(--primary);
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        nav {
+            margin-top: 1.5rem;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 700;
+            transition: color 0.3s;
+            position: relative;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        nav a:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Roboto Slab', serif;
+            color: var(--primary);
+            text-align: center;
+            margin: 4rem 0 2rem;
+        }
+        .about {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+        .about-img {
+            flex: 1 1 200px;
+            max-width: 200px;
+            margin-right: 2.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .about-img:hover {
+            transform: scale(1.05);
+        }
+        .about-img img {
+            width: 100%;
+            display: block;
+        }
+        .about-text {
+            flex: 2 1 350px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .skill-card {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            min-width: 120px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            transition: background 0.3s, color 0.3s;
+        }
+        .skill-card:hover {
+            background: var(--primary);
+            color: var(--card-bg);
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(90, 103, 216, 0.2);
+        }
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 0.5rem 0;
+            font-family: 'Roboto Slab', serif;
+        }
+        .project-desc {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .project-link {
+            align-self: flex-start;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .project-link:hover {
+            color: var(--primary);
+        }
+        .contact {
+            padding-bottom: 3rem;
+        }
+        .contact form {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+        }
+        .contact button {
+            background: var(--primary);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+        }
+        .contact button:hover {
+            background: var(--accent);
+        }
+        footer {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-img {
+                margin: 0 0 2rem 0;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            nav a {
+                margin: 0 0.5rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Jane Doe</h1>
+            <p>Full Stack Developer & UI Enthusiast</p>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section id="about" class="about">
+                <div class="about-img">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Doe">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p>
+                        Hi! I'm Jane, a passionate developer crafting modern web experiences. I love building scalable applications, designing beautiful user interfaces, and solving real-world problems with elegant code. My expertise spans both front-end and back-end technologies, allowing me to build complete, robust solutions from the ground up.
+                    </p>
+                </div>
+            </section>
+            <section id="skills">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills">
+                    <div class="skill-card">HTML5</div>
+                    <div class="skill-card">CSS3</div>
+                    <div class="skill-card">JavaScript</div>
+                    <div class="skill-card">React</div>
+                    <div class="skill-card">Node.js</div>
+                    <div class="skill-card">Express</div>
+                    <div class="skill-card">MongoDB</div>
+                    <div class="skill-card">SQL</div>
+                    <div class="skill-card">Git & GitHub</div>
+                    <div class="skill-card">UI/UX Design</div>
+                </div>
+            </section>
+            <section id="projects">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects">
+                    <div class="project-card">
+                        <img class="project-img" src="https://images.unsplash.com/photo-1542831371-29b0f74f9d0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Project 1">
+                        <div class="project-content">
+                            <div>
+                                <h3 class="project-title">E-commerce Platform</h3>
+                                <p class="project-desc">A full-stack e-commerce site with user authentication, a shopping cart, and a secure payment gateway. Built with MERN stack.</p>
+                            </div>
+                            <a class="project-link" href="#" target="_blank">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img class="project-img" src="https://images.unsplash.com/photo-1510519138101-570d1d777d19?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Project 2">
+                        <div class="project-content">
+                            <div>
+                                <h3 class="project-title">Social Media Dashboard</h3>
+                                <p class="project-desc">A responsive dashboard for managing social media accounts, featuring real-time analytics and scheduling tools.</p>
+                            </div>
+                            <a class="project-link" href="#" target="_blank">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img class="project-img" src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d58?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Project 3">
+                        <div class="project-content">
+                            <div>
+                                <h3 class="project-title">Online Learning Platform</h3>
+                                <p class="project-desc">An application for students to enroll in courses, track progress, and complete assignments. Integrates video and document viewers.</p>
+                            </div>
+                            <a class="project-link" href="#" target="_blank">View Project &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="contact">
+                <h2 class="section-title">Contact</h2>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Jane Doe. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
