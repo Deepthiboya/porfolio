@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header & Courses</title>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #34495e; /* Updated to a professional slate blue */
+            --primary-hover-color: #2c3e50; /* Updated to a darker slate blue */
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --card-bg: #f9fafb;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --rounded: 0.5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-color);
+            padding: 1rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px; /* Decreased the max-width for a narrower layout */
+            margin: auto;
+        }
+
+        /* --- Header Styling (Flexbox) --- */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--light-bg);
+            padding: 1rem 1.5rem;
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #000000; /* Updated to black */
+            font-weight: bold; /* Added bold font weight */
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Main Content & Grid Layout --- */
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: bold; /* Changed to bold */
+            margin-bottom: 0.5rem;
+        }
+
+        .course-description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Pushes the button to the bottom */
+        }
+
+        .enroll-button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: var(--rounded);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .enroll-button:hover {
+            background-color: var(--primary-hover-color);
+        }
+
+        /* --- Responsive Design (Media Query) --- */
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+            }
+
+            .logo {
+                margin-bottom: 0;
+            }
+
+            .nav-links {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header component -->
+        <header class="header">
+            <div class="logo">
+                Deepthi
+            </div>
+            <nav>
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Courses</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main content area for the courses section -->
+        <main>
+            <h2 class="section-title">Our Popular Courses</h2>
+
+            <!-- Courses grid -->
+            <div class="courses-grid">
+
+                <!-- Course Card 1 -->
+                <div class="course-card">
+                    <h3 class="course-title">Web Development 101</h3>
+                    <p class="course-description">Learn the fundamentals of HTML, CSS, and JavaScript to build your first website from scratch.</p>
+                    <button class="enroll-button">
+                        Enroll Now
+                    </button>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <h3 class="course-title">Advanced Python</h3>
+                    <p class="course-description">Dive deep into advanced Python concepts like decorators, generators, and asynchronous programming.</p>
+                    <button class="enroll-button">
+                        Enroll Now
+                    </button>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card">
+                    <h3 class="course-title">Data Science with R</h3>
+                    <p class="course-description">Master data manipulation, visualization, and statistical analysis using the R programming language.</p>
+                    <button class="enroll-button">
+                        Enroll Now
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
